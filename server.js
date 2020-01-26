@@ -26,10 +26,14 @@ app.use(cors);
 // Initialize the main project folder
 app.use(express.static('website'));
 
+app.get('/', (res, req) => {
+  res.send('Hello World');
+});
+
 
 // Setup Server
-const port = 8000;
+const port = process.env.port || 8000;
 
 const server = app.listen(port, ()=> {
-  console.log(`Runningon localhost: ${port}`);
+  console.log(`Running on localhost: ${port}`);
 });
