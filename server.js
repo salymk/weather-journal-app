@@ -7,9 +7,13 @@ const express = require('express');
 // Start up an instance of app
 const app = express();
 
-/* Middleware*/
+/* Dependencies */
+
 // bodyParser for Middleware
 const bodyParser = require('body-parser');
+
+/* Middleware*/
+
 // Here we are configuring express to use body-parser as middle-ware.
 // 'use' method - allows us to connect packages to our project
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,9 +29,7 @@ app.use(express.static('website'));
 
 // Setup Server
 const port = 8000;
-const server = app.listen(port, listening);
 
-function listening() {
-  console.log("Server Running");
-  console.log(`Running on local host: ${port}`);
-}
+const server = app.listen(port, ()=> {
+  console.log(`Runningon localhost: ${port}`);
+});
