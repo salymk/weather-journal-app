@@ -8,32 +8,27 @@ const express = require('express');
 const app = express();
 
 /* Dependencies */
-
-// bodyParser for Middleware
 const bodyParser = require('body-parser');
-
 /* Middleware*/
-
 // Here we are configuring express to use body-parser as middle-ware.
 // 'use' method - allows us to connect packages to our project
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 // cors for accessing resources from remote hosts
 const cors = require('cors');
-app.use(cors);
+app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static('website'));
 
-app.get('/', (res, req) => {
-  res.send('Hello World');
-});
-
-
 // Setup Server
-const port = process.env.port || 8000;
+const port = 3000;
 
 const server = app.listen(port, ()=> {
   console.log(`Running on localhost: ${port}`);
+});
+
+// Get Request
+app.get('/all', (req, res) => {
+  res.send(projectData);
 });
