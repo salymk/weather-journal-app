@@ -20,7 +20,6 @@ router.post('/weather', (req, res) => {
     userResponse: req.body.userResponse
   });
   projectData.push(req.body);
-  console.log(projectData);
 });
 
 
