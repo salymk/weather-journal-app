@@ -28,7 +28,16 @@ const server = app.listen(port, ()=> {
   console.log(`Running on localhost: ${port}`);
 });
 
-// Get Request
+// GET Request that returns projectData
 app.get('/all', (req, res) => {
   res.send(projectData);
+  console.log("GET Request");
 });
+
+// POST Request that adds incoming data to projectData
+
+// app.post('/all', (req, res) => {
+//   projectData.push(req.temparature);
+//   projectData.push(req.date);
+//   projectData.push(req.userResponse);
+// });
