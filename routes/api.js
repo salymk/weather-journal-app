@@ -12,16 +12,10 @@ router.get('/weather', (req, res) => {
 
 // POST Request that adds incoming data to projectData
 router.post('/weather', (req, res) => {
-  console.log(req.body);
-  res.send({
-    type: 'POST',
-    temperature: req.body.temperature,
-    date: req.body.date,
-    userResponse: req.body.userResponse
-  });
-  projectData.push(req.body);
+  projectData.temperature = req.body.temperature;
+  projectData.date = req.body.date;
+  projectData.userResponse = req.body.userResponse;
 });
-
 
 
 module.exports = router;

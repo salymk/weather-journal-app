@@ -26,7 +26,7 @@ app.use('/api', routes);
 app.use(express.static('website'));
 
 // Setup Server
-const port = process.env.port || 3000;
+const port = process.env.port || 4000;
 
 // Listen for requests
 const server = app.listen(port, ()=> {
