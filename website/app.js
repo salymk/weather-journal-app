@@ -11,7 +11,7 @@ const saveBtn = document.querySelector('.save');
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+'/'+ d.getDate()+'/'+ d.getFullYear();
 
 saveBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -32,6 +32,7 @@ saveBtn.addEventListener('click', (e) => {
       `;
 
       outputSection.innerHTML = newJournal;
+
       formInput.reset();
     });
 });
