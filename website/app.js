@@ -13,6 +13,25 @@ const saveBtn = document.querySelector('.save');
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
-fetch(url + '80015' + ',us&appid=' + apiKey)
-  .then( res => res.json())
-  .then( data => console.log(data));
+saveBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  fetch(`${url}${zipCode.value},us&appid=${apiKey}&units=imperial`)
+    .then( res => res.json())
+    .then( data => {
+      let newJournal =
+      `
+      <div class="card bg-light mb-3" style="max-width: 20rem;">
+        <div class="card-header">${zipCode.value}</div>
+        <div class="card-body">
+          <h4 class="card-title">Today's weather is: ${data.main.temp}</h4>
+          <h6 class="card-subtitle text-muted">${newDate}</h6>
+          <p class="card-text mt-3">${journalSummary.value}</p>
+        </div>
+      </div>
+      `;
+
+      outputSection.innerHTML = newJournal;
+      formInput.reset();
+    });
+});
