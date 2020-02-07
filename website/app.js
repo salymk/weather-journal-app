@@ -12,7 +12,7 @@ const saveBtn = document.querySelector('.save');
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'/'+ d.getDate()+'/'+ d.getFullYear();
+let newDate = d.getMonth()+1+'/'+ d.getDate()+'/'+ d.getFullYear();
 
 // getWeather();
 
@@ -20,6 +20,11 @@ let newDate = d.getMonth()+'/'+ d.getDate()+'/'+ d.getFullYear();
 async function getWeather(userZip) {
   const response = await fetch(`${url}${userZip},us&appid=${apiKey}&units=imperial`);
   const weather = await response.json();
+  postData('http://localhost:4000/api/weather', {
+    temperature: weather.main.temp,
+    date: newDate,
+    userResponse: journalSummary.value
+  });
 
   // Create a new journal
   const newJournal = createJournal(weather.main.temp, newDate);
@@ -27,7 +32,7 @@ async function getWeather(userZip) {
   outputSection.appendChild(newJournal);
   formInput.reset();
 
-  // console.log(weather);
+  console.log(weather);
 }
 
 // Function to create new journal entries
@@ -77,6 +82,59 @@ saveBtn.addEventListener('click', (e)=> {
       });
 });
 
+
+// POST method implementation:
+async function postData(url = '', data = {temperature, date, userResponse}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return await response.json(); // parses JSON response into native JavaScript objects
+}
+
+
+fetch('/weather')
+  .then(response => {
+    console.log(response);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 // saveBtn.addEventListener('click', (e) => {
 //   e.preventDefault();
@@ -96,7 +154,7 @@ saveBtn.addEventListener('click', (e)=> {
 //       </div>
 //       `;
 //
-//       outputSection.innerHTML = newJournal;
+//       outputSection.innerHTML += newJournal;
 //
 //       formInput.reset();
 //     });
