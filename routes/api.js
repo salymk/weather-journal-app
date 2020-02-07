@@ -1,11 +1,13 @@
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+const projectData = {
+  test: "Test"
+};
 
 const express = require('express');
 const router = express.Router();
 
 // GET Request that returns projectData
-router.get('/getWeather', (req, res) => {
+router.get('/weather', (req, res) => {
   res.send(projectData);
 });
 
@@ -19,7 +21,7 @@ router.post('/weather', (req, res) => {
   // projectData.push(data);
   // res.json(projectData);
   // console.log(projectData);
+  console.log(req.body);
 });
-
 
 module.exports = router;
