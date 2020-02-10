@@ -44,14 +44,6 @@ const postData = async (url = '', data = {temp, date, userResponse}) => {
     },
     body: JSON.stringify(data)
   });
-
-  // try {
-  //   const newData = await response.json();
-  //   // return newData;
-  // }
-  // catch (error) {
-  //   console.log('Error', error)
-  // }
 }
 
 
