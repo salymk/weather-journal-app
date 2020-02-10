@@ -1,7 +1,5 @@
-// Setup empty JS object to act as endpoint for all routes
-const projectData = {
-  test: "Test"
-};
+// Setup empty JS Array to act as endpoint for all routes
+const projectData = [];
 
 const express = require('express');
 const router = express.Router();
@@ -14,14 +12,21 @@ router.get('/weather', (req, res) => {
 
 // POST Request that adds incoming data to projectData
 router.post('/weather', (req, res) => {
-  projectData.temperature = req.body.temperature;
-  projectData.date = req.body.date;
-  projectData.userResponse = req.body.userResponse;
-  // const data = req.body;
-  // projectData.push(data);
-  // res.json(projectData);
-  // console.log(projectData);
-  console.log(req.body);
+  const weatherData = {};
+  let data = req.body;
+
+  // Create new entry for JS Object Endpoint
+  weatherData.temp = data.temp;
+  weatherData.date = data.date;
+  weatherData.userResponse = data.userResponse;
+  weatherData.zipcode = data.zipcode;
+
+  projectData.push(weatherData);
+
+  // Send response to Endpoint
+  res.send(projectData);
+
+  console.log(data);
 });
 
 module.exports = router;
