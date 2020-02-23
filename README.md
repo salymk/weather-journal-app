@@ -3,8 +3,22 @@
 ## Overview
 This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+## Instructions To Run Project
+If you already node installed, run in the terminal:
+1) npm i -D express
+2) npm i -D cors
+3) npm i -D body-parser
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+Then to start the server: 'npm run dev'
+
+
+## Tool Used:
+HTML
+CSS
+JavaScript
+Node.js
+Express.js
+Bootstrap
+
+![Picture of application](img/weather.png)
+![Picture of application](img/weather2.png)
