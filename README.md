@@ -13,12 +13,12 @@ Then to start the server: 'npm run dev'
 
 
 ## Tool Used:
-HTML
-CSS
-JavaScript
-Node.js
-Express.js
-Bootstrap
+* HTML
+* CSS
+* JavaScript
+* Node.js
+* Express.js
+* Bootstrap
 
 ![Picture of application](img/weather.png)
 ---------------------------------------------------
