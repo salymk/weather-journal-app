@@ -21,4 +21,5 @@ Express.js
 Bootstrap
 
 ![Picture of application](img/weather.png)
+---------------------------------------------------
 ![Picture of application](img/weather2.png)
